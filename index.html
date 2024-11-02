@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <h1 class="underline underline-offset-4 text-center text-3xl font-semibold mt-10 mb-10">Our Product</h1>
+
+    <div id="main" class="flex flex-wrap items-center justify-evenly gap-5 mx-10"></div>
+
+    <script>
+       fetch ('product.json')
+        .then((response)=>response.json())
+        .then(data=>{
+            data.products.forEach((item)=>{
+                let mainDiv = document.getElementById('main')
+                let newDiv = document.createElement('div')
+                newDiv.innerHTML = `<img src="${item.image}" alt="image">
+                         <h4>Id : ${item.id}<h4>
+                         <p>Title : ${item.title}</p>
+                         <p>Name : ${item.name}</p> 
+                         <h5>Price : ${item.price}</h5> `
+                           
+                mainDiv.appendChild(newDiv)
+                mainDiv.style.marginBottom = "30px";
+                newDiv.style.backgroundColor = "#ddd",
+                newDiv.style.borderRadius = "10px";
+                newDiv.style.padding = "20px";
+                newDiv.style.textAlign = "center";
+                newDiv.style.marginBottom = "20px";
+                newDiv
+            })
+        })
+    </script>
+</body>
+</html>
